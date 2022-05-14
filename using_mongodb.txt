@@ -1,0 +1,38 @@
+use my_first_db
+
+show collections
+
+db.students.insert({ name: 'Jermonus', home_state: 'Chitown', lucky_number: 9292934190239012098321890124841208, birthday: 
+{month: 2, day: 3, year: 4}})
+
+db.students.insert({ name: 'Jeff', home_state: 'Town', lucky_number: 21, birthday: 
+{month: 3, day: 5, year: 20}})
+
+db.students.insert({ name: 'Reah', home_state: 'City', lucky_number: 2231, birthday: 
+{month: 12, day: 24, year: 2241}})
+
+db.students.insert({ name: 'Jimmy', home_state: 'State', lucky_number: 211, birthday: 
+{month: 7, day: 18, year: 124}})
+
+db.students.insert({ name: 'Hermain', home_state: 'Tucky', lucky_number: 90, birthday: 
+{month: 10, day: 123, year: 1124}})
+
+db.students.find()
+db.students.find({"home_state": "City"})
+db.students.find({"home_state": "State"})
+db.students.find({"lucky_number": {$gt: 3}}) 
+db.students.find({"lucky_number": {$lte: 10}}) 
+db.students.find({"lucky_number": {$gt: 1,$lt:9}})
+db.students.updateMany({}, {$set: {interests: ['coding', 'pizza', 'javasipt']}}) 
+db.students.update({_id: ObjectId("627ed4ee5dee5b4f272cceab")}, {$push: {interests: 'golf'}})
+db.students.update({_id: ObjectId("627eeff75dee5b4f272cceae")}, {$push: {interests: 'reddit'}})
+db.students.update({_id: ObjectId("627eeff75dee5b4f272cceae")}, {$push: {interests: 'taxes'}})
+db.students.update({_id: ObjectId("627eeff75dee5b4f272cceae")}, {$pull: {interests: 'taxes'}})
+db.students.deleteMany({"home_state": "California"})
+db.students.deleteOne({"name": 'Hermain'})
+db.students.deleteOne({"lucky_number": {$gt: 21}}, true)
+db.students.updateMany({},{number_of_belts: 1})
+db.students.updateMany({"home_state": 'WA'}, {$inc: {number_of_belts: 1}})
+db.students.updateMany({},{$rename: {'number_of_belts': 'belts_earned'}})
+db.students.updateMany({}, {$unset: {"lucky_number": ""}})
+db.students.updateMany({}, {#set: {updated_on: Date()}})
